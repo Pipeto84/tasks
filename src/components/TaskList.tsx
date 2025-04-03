@@ -1,6 +1,7 @@
 import { deleteTask, TaskState } from "../features/tasks/taskSlice";
 import { Link } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../app/hooks";
+import "../styles/TaskList.css"
 
 export const TaskList = () => {
   const tasks = useAppSelector((state) => state.tasks);
@@ -19,7 +20,7 @@ export const TaskList = () => {
           Create Task
         </Link>
       </header>
-      <div className="grid grid-cols-3 gap-4 taskList">
+      <div className="taskList ">
         {tasks.map((task) => (
           <div key={task.id} className="bg-neutral-800 p-4 rounded-md">
             <header className="flex justify-between">

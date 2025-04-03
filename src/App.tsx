@@ -1,4 +1,3 @@
-import { NavBar } from "./components/NavBar";
 import { TaskForm } from "./components/TaskForm";
 import { TaskList } from "./components/TaskList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -8,7 +7,6 @@ function App() {
   return (
     <div className="bg-zinc-900 h-screen text-white">
       <div className="flex items-center justify-center h-full">
-        {/* <NavBar/> */}
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<TaskList />} />
