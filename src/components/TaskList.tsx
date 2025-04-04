@@ -13,7 +13,6 @@ export const TaskList = () => {
     <div className="w-4/6 ">
       <h1 className="text-5xl text-center m-3 font-bold text-gray-200">Tasks: {tasks.length}</h1>
       <header className="flex justify-end items-center py-4">
-        {/* <h1 className="font-bold">{tasks.length} Tasks</h1> */}
         <Link
           to="/create-task"
           className="bg-indigo-600 px-2 py-1 rounded-sm text-sm shadow-md shadow-indigo-500 newTask"

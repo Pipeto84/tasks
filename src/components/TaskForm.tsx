@@ -84,7 +84,7 @@ export const TaskForm = () => {
       ></textarea>
       <div className="flex justify-between">
         <button
-          className="bg-indigo-600 px-2 py-1 rounded-md disabled:opacity-25 disabled:cursor-not-allowed"
+          className="bg-indigo-600 px-2 py-1 rounded-md disabled:opacity-25 disabled:cursor-not-allowed cursor-pointer"
           disabled={task.title.length < 1}
         >
           Save
