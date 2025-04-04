@@ -3,13 +3,15 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
-@media screen and (max-width: 50rem) {
+.card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .4);
+}
+@media screen and (max-width: 800px) {
   .taskList {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-@media screen and (max-width: 31.25rem) {
+@media screen and (max-width: 500px) {
   .taskList {
     grid-template-columns: 1fr;
   }
