@@ -32,7 +32,7 @@ export const TaskForm = () => {
     e.preventDefault();
     if (params.id) {
       dispatch(editTask(task));
-    } else {
+    } else if(task.title.length !== 0){
       dispatch(
         addTask({
           ...task,
@@ -50,13 +50,16 @@ export const TaskForm = () => {
       }
     }
   }, [params.id, tasks]);
+  const handleCancel = () => {
+    navigate("/");
+  };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-zinc-800 max-w-sm p-4 rounded-xl"
+      className="bg-zinc-800 max-w-sm p-4 rounded-xl shadow-lg"
     >
-      <label htmlFor="title" className="block text-xs font-bold mb-2">
+      <label htmlFor="title" className="block text-base font-bold mb-2">
         Task:
       </label>
       <input
@@ -69,7 +72,7 @@ export const TaskForm = () => {
         autoComplete="off"
         autoFocus
       />
-      <label htmlFor="description" className="block text-xs font-bold mb-2">
+      <label htmlFor="description" className="block text-base font-bold mb-2">
         Description:
       </label>
       <textarea
@@ -79,12 +82,20 @@ export const TaskForm = () => {
         value={task.description}
         className="w-full p-2 rounded-md bg-zinc-600 mb-2"
       ></textarea>
-      <button
-        className="bg-indigo-600 px-2 py-1 rounded-md xxx disabled:opacity-25 disabled:cursor-not-allowed"
-        disabled={task.title.length < 1}
-      >
-        Save
-      </button>
+      <div className="flex justify-between">
+        <button
+          className="bg-indigo-600 px-2 py-1 rounded-md disabled:opacity-25 disabled:cursor-not-allowed"
+          disabled={task.title.length < 1}
+        >
+          Save
+        </button>
+        <button
+          className="bg-red-500 px-2 py-1 rounded-md cursor-pointer"
+          onClick={handleCancel}
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   );
 };

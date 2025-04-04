@@ -11,20 +11,21 @@ export const TaskList = () => {
   };
   return (
     <div className="w-4/6 ">
-      <header className="flex justify-between items-center py-4">
-        <h1 className="font-bold">{tasks.length} Tasks</h1>
+      <h1 className="text-5xl text-center m-3 font-bold text-gray-200">Tasks: {tasks.length}</h1>
+      <header className="flex justify-end items-center py-4">
+        {/* <h1 className="font-bold">{tasks.length} Tasks</h1> */}
         <Link
           to="/create-task"
-          className="bg-indigo-600 px-2 py-1 rounded-sm text-sm"
+          className="bg-indigo-600 px-2 py-1 rounded-sm text-sm shadow-md shadow-indigo-500 newTask"
         >
           Create Task
         </Link>
       </header>
       <div className="taskList ">
         {tasks.map((task) => (
-          <div key={task.id} className="bg-neutral-800 p-4 rounded-md">
+          <div key={task.id} className="bg-neutral-800 p-4 rounded-md card">
             <header className="flex justify-between">
-              <h3>{task.title}</h3>
+              <h3 className="font-bold">{task.title}</h3>
               <div className="flex gap-x-2">
                 <Link
                   to={`/edit-task/${task.id}`}
