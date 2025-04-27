@@ -14,6 +14,7 @@ export const TaskForm = () => {
     title: "",
     description: "",
   });
+  const [canceled, setCanceled] = useState(false);
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTask({
@@ -31,8 +32,10 @@ export const TaskForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (params.id) {
-      dispatch(editTask(task));
-    } else if(task.title.length !== 0){
+      if (!canceled) {
+        dispatch(editTask(task));
+      }
+    } else if (task.title.length !== 0) {
       dispatch(
         addTask({
           ...task,
@@ -51,7 +54,10 @@ export const TaskForm = () => {
     }
   }, [params.id, tasks]);
   const handleCancel = () => {
-    navigate("/");
+    setCanceled(true)
+  };
+  const handleSave = () => {
+    setCanceled(false)
   };
 
   return (
@@ -86,6 +92,7 @@ export const TaskForm = () => {
         <button
           className="bg-indigo-600 px-2 py-1 rounded-md disabled:opacity-25 disabled:cursor-not-allowed cursor-pointer"
           disabled={task.title.length < 1}
+          onClick={handleSave}
         >
           Save
         </button>
