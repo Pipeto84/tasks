@@ -36,12 +36,14 @@ export const TaskForm = () => {
         dispatch(editTask(task));
       }
     } else if (task.title.length !== 0) {
-      dispatch(
-        addTask({
-          ...task,
-          id: uuid(),
-        })
-      );
+      if (!canceled) {
+        dispatch(
+          addTask({
+            ...task,
+            id: uuid(),
+          })
+        );
+      }
     }
     navigate("/");
   };
@@ -54,10 +56,10 @@ export const TaskForm = () => {
     }
   }, [params.id, tasks]);
   const handleCancel = () => {
-    setCanceled(true)
+    setCanceled(true);
   };
   const handleSave = () => {
-    setCanceled(false)
+    setCanceled(false);
   };
 
   return (
